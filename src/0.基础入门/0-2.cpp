@@ -12,9 +12,10 @@ using socket_ptr=std::shared_ptr<tcp::socket>;
 
 void client_session(socket_ptr ptr){
     while(true){
-        char data[512];
-        size_t len=ptr->read_some(boost::asio::buffer(data));
-        if(len>0)write(*ptr,boost::asio::buffer(data,len));//todo：客户端关闭连接后error
+            boost::system::error_code error;
+            char data[512];
+            size_t len = ptr->read_some(boost::asio::buffer(data), error);
+            if (len > 0)write(*ptr, boost::asio::buffer(data, len));//todo：客户端关闭连接后error
     }
 }
 int main(){

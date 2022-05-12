@@ -45,7 +45,11 @@ target_link_libraries(0-4 ${Boost_LIBRARIES} -lpthread)
 add_executable(0-5 src/0.基础入门/0-5.cpp)
 target_link_libraries(0-4 ${Boost_LIBRARIES} -lpthread)
 
+add_executable(0-6 src/0.基础入门/0-6.cpp)
+target_link_libraries(0-6 ${Boost_LIBRARIES} -lpthread)
 
+add_executable(0-7 src/0.基础入门/0-7.cpp)
+target_link_libraries(0-7 ${Boost_LIBRARIES} -lpthread)
 
 
 
