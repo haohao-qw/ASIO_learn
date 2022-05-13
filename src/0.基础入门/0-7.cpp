@@ -44,6 +44,7 @@ public:
     void do_ask_clients(){
         std::string str="ask_client\n";
         boost::asio::write(socket,boost::asio::buffer(str.c_str(),str.size()));///发送数据
+        read_answer();
     }
 
     void on_ping(const std::string& msg){
@@ -61,7 +62,7 @@ public:
     ///对接受到的数据进行解析
     void process_msg(){///对解析报文进行处理
         std::string msg(buff,already_read);///直接从buff中拿到数据
-        if(msg.find("lonin")==0)on_login();///进行响应
+        if(msg.find("login")==0)on_login();///进行响应
         else if(msg.find("ping")==0)on_ping(msg);
         else if(msg.find("clients")==0)on_clients(msg);
         else std::cerr<<"invalid msg"<<msg<<std::endl;
